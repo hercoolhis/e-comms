@@ -15,9 +15,7 @@ import { setCurrentUser } from "./redux/user/user.action";
 
 class App extends Component {
   
-  unSubscribeFromAuth = null;
-
-  
+  unSubscribeFromAuth = null;  
 
   componentDidMount() {
 
@@ -50,12 +48,26 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route path='/shop' component={ShopPage} />
-          <Route exact path='/signin' component={SignInAndSignUpPage} />
+          <Route
+            exact
+            path='/signin'
+            render={() =>
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <SignInAndSignUpPage />
+              )
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
+
+const mapStateToProps = ({user}) => ({
+  currentUser: user.current_user
+})
 
 
 const mapDispatchToProps = dispatch => ({
@@ -64,4 +76,4 @@ const mapDispatchToProps = dispatch => ({
 
 
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
