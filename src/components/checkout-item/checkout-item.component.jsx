@@ -23,7 +23,6 @@ const CheckoutItem = ({ cartItem , removeItem, reduceItemQuantity, addItem  }) =
   </div>
   ); 
 } 
-  
 
 
 const dispatchMapToProps = dispatch => ({
