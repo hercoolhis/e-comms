@@ -11,8 +11,7 @@ import CheckOutPage from "./pages/checkout/checkout.component";
 
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 import { connect } from "react-redux";
-import { setCurrentUser } from "./redux/user/user.action";
-
+import { setCurrentUser } from "./redux/user/user.action"
 
 
 
@@ -36,6 +35,7 @@ class App extends Component {
       }
 
       setCurrentUser(userAuth);
+     
     }); 
       
   }
@@ -69,8 +69,8 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = ({user: { current_user }}) => ({
-  currentUser: current_user
+const mapStateToProps = (state) => ({
+  currentUser: state.user.current_user  
 })
 
 
