@@ -8,7 +8,7 @@ import { createStructuredSelector } from "reselect";
 import "./collection.styles.scss"
 
 
-const CollectionPage = ({ collection }) => {   
+const CollectionPage = ({ collection }) => {      
     const { title, items } = collection;  
     return (
         <div className="collection-page">
@@ -26,10 +26,11 @@ const CollectionPage = ({ collection }) => {
     )
 }
 
-const mapStateToProps = (state, { match: { params: { collectionId } } }) => {
+const mapStateToProps = (state, ownProps) => {
     return createStructuredSelector({
-        collection: selectCollection(collectionId)
-    })
-}
+        collection: selectCollection(ownProps.match.params.collectionId)
+    })    
+};
+
 
 export default connect(mapStateToProps)(CollectionPage);
