@@ -26,3 +26,9 @@ export const reduceItemQuantity = (item_id) => {
         payload: item_id
     }
 }
+
+export const clearCart = () => {
+    return {
+        type: CartActionTypes.CLEAR_CART        
+    }
+}
